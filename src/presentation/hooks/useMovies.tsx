@@ -15,9 +15,11 @@ export const useMovies = () => {
     const initialLoad = async() => {
         // Solicita indicar un adaptador fetcher
         const nowPlayingMovies = await UseCases.moviesNowPlayingUseCase(movieDBFetcher);
+        console.log(nowPlayingMovies[0]);
     }
 
     return {
-
+        isLoading,
+        nowPlaying
     }
 }

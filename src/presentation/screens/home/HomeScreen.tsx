@@ -5,6 +5,7 @@ import { useMovies } from '../../hooks/useMovies'
 export const HomeScreen = () => {
 
   const {} = useMovies();
+  
   return (
     <View>
         <Text>HomeScreen</Text>
