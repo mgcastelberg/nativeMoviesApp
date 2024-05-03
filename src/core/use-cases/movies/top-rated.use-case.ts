@@ -1,0 +1,16 @@
+import { HttpAdapter } from "../../../adapters/http/http.adapter";
+import { TopRatedResponse } from "../../../infrastructure/interfaces/movie-db.responses";
+import { MovieMapper } from "../../../infrastructure/mappers/movie.mapper";
+import { Movie } from "../../entities/movie.entity";
+
+export const moviesTopRatedUseCase = async ( fetcher: HttpAdapter ): Promise<Movie[]> => {
+    // casos de uso sean agnosticos - que no dependan dependencias de paquetes de terceros
+    try {
+        const topRated = await fetcher.get<TopRatedResponse>('/top_rated');
+        // transform data - mapper
+        return topRated.results.map( MovieMapper.fromMovieDBResultToEntity );        
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error fetching movies - top reated");
+    }
+}
