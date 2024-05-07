@@ -11,11 +11,14 @@ interface Props {
 
 export const PosterCarousel = ({ height = 440, movies }: Props) => {
   return (
-    <View style={{ height, backgroundColor:'gray' }}>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} >
+    <View style={{ height, backgroundColor:'gainsboro' }}>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {
-                // movies.map( movie => <Text key={ movie.id} >{ movie.title }</Text>)
-                movies.map( movie => <MoviePoster key={ movie.id} movie={ movie } />)
+                movies.map( (movie,index) => <MoviePoster key={ movie.id } 
+                    movie={ movie } 
+                    isFirst={index === 0} 
+                    isLast={index === movies.length - 1}
+                />)
             }
         </ScrollView>
     </View>
