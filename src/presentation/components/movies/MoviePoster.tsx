@@ -28,7 +28,7 @@ export const MoviePoster = ({ movie, height=420, width=300, isFirst = false, isL
               marginRight: isLast ? 20 : 10
             })}
         >
-            <View style={{...styles.imageContainer, height:420, width:300 }}>
+            <View style={styles.imageContainer}>
                 <Image style={{ ...styles.image }} source={{ uri: movie.poster }} />
             </View>
         </Pressable>
