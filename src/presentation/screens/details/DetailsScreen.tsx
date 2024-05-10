@@ -1,8 +1,9 @@
-import { useRoute } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack';
 import { View, Text } from 'react-native'
 import { RootStackParams } from '../../navigation/NavigationStack';
 import { useMovie } from '../../hooks/useMovie';
+import { MovieHeader } from '../../components/movie/MovieHeader';
+import { FullMovie } from '../../../core/entities/movie.entity';
 
 // Para extender las propiedades del archivo de rutas
 interface Props extends StackScreenProps<RootStackParams, 'Details'>{}
@@ -16,11 +17,19 @@ export const DetailsScreen = ({ route }: Props) => {
     const { movieId } = route.params;
     // console.log({movieId});
 
-    const {} = useMovie( movieId );
+    const { isLoading, movie } = useMovie( movieId );
+
+    if ( isLoading ) {
+        return <Text>Loading...</Text>
+    }
 
     return (
         <View>
-            <Text>DetailsScreen</Text>
+            {/* <MovieHeader movie={ movie } /> */}
+            {/* Header */}
+            {movie && <MovieHeader movie={movie as FullMovie} />}
+            {/* Details */}
+
         </View>
     )
 }
