@@ -4,6 +4,8 @@ import { RootStackParams } from '../../navigation/NavigationStack';
 import { useMovie } from '../../hooks/useMovie';
 import { MovieHeader } from '../../components/movie/MovieHeader';
 import { FullMovie } from '../../../core/entities/movie.entity';
+import { MovieDetails } from '../../components/movie/MovieDetails';
+import { ScrollView } from 'react-native-gesture-handler';
 
 // Para extender las propiedades del archivo de rutas
 interface Props extends StackScreenProps<RootStackParams, 'Details'>{}
@@ -24,12 +26,12 @@ export const DetailsScreen = ({ route }: Props) => {
     }
 
     return (
-        <View>
+        <ScrollView>
             {/* <MovieHeader movie={ movie } /> */}
             {/* Header */}
             {movie && <MovieHeader movie={movie as FullMovie} />}
             {/* Details */}
-
-        </View>
+            {movie && <MovieDetails movie={movie as FullMovie} />}
+        </ScrollView>
     )
 }
