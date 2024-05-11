@@ -1,5 +1,5 @@
 import { StackScreenProps } from '@react-navigation/stack';
-import { View, Text } from 'react-native'
+import { Text } from 'react-native'
 import { RootStackParams } from '../../navigation/NavigationStack';
 import { useMovie } from '../../hooks/useMovie';
 import { MovieHeader } from '../../components/movie/MovieHeader';
@@ -19,7 +19,7 @@ export const DetailsScreen = ({ route }: Props) => {
     const { movieId } = route.params;
     // console.log({movieId});
 
-    const { isLoading, movie } = useMovie( movieId );
+    const { isLoading, movie, cast = [] } = useMovie( movieId );
 
     if ( isLoading ) {
         return <Text>Loading...</Text>
@@ -31,7 +31,7 @@ export const DetailsScreen = ({ route }: Props) => {
             {/* Header */}
             {movie && <MovieHeader movie={movie as FullMovie} />}
             {/* Details */}
-            {movie && <MovieDetails movie={movie as FullMovie} />}
+            {movie && <MovieDetails movie={movie as FullMovie} cast={cast} />}
         </ScrollView>
     )
 }
