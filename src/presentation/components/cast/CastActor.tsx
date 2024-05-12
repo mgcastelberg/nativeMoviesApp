@@ -13,7 +13,7 @@ export const CastActor = ( {actor}: Props ) => {
         />
         <View style={styles.actorInfo} >
             <Text style={{ fontSize:15, fontWeight:'bold' }}>{ actor.name }</Text>
-            <Text style={{ fontSize:12, opacity:0.7 }}>{ actor.name }</Text>
+            <Text style={{ fontSize:12, opacity:0.7 }}>{ actor.character }</Text>
         </View>
     </View>
   )
